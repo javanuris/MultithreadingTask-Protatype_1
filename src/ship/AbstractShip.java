@@ -48,11 +48,11 @@ public abstract class AbstractShip {
         return goodOnShip;
     }
 
-    public synchronized void setGoodOnShip(int goodOnShip) {
+    public  void setGoodOnShip(int goodOnShip) {
         this.goodOnShip = goodOnShip;
     }
 
-    public synchronized boolean loadDetermine() {
+    public  boolean loadDetermine() {
         if (getGoodOnShip() >= getMaxCapacity()) {
             return true;
         }
@@ -60,7 +60,7 @@ public abstract class AbstractShip {
     }
 
     @Override
-    public synchronized String toString() {
+    public  String toString() {
         return "Номер: "+getId() + " - Тип: "+getType().toUpperCase() + "  Груз на судне " + getGoodOnShip();
     }
 }

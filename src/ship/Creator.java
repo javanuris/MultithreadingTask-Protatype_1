@@ -4,7 +4,7 @@ package ship;
  * Created by User on 04.03.2017.
  */
 public interface Creator {
-
+    int CONNECTION_COUNT = 2;
     String OIL_SHIP = "oil";
     String BOX_SHIP = "box";
     String EAT_SHIP = "eat";

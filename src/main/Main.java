@@ -8,7 +8,6 @@ import thread.CommonShipThread;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -21,9 +20,9 @@ public class Main {
         ArrayList<AbstractShip> leaveShipList = new ArrayList<>();
         ArrayList<AbstractShip> comeShipList = new ArrayList<>();
 
-        ExecutorService oilExec = Executors.newFixedThreadPool(2);
-        ExecutorService eatExec = Executors.newFixedThreadPool(2);
-        ExecutorService boxExec = Executors.newFixedThreadPool(2);
+        ExecutorService oilExec = Executors.newFixedThreadPool(Creator.CONNECTION_COUNT);
+        ExecutorService eatExec = Executors.newFixedThreadPool(Creator.CONNECTION_COUNT);
+        ExecutorService boxExec = Executors.newFixedThreadPool(Creator.CONNECTION_COUNT);
 
         ArrayList<Future<AbstractShip>> result = new ArrayList<>();
 
@@ -46,7 +45,6 @@ public class Main {
                 default:
                     break;
             }
-
         }
 
         for (Future<AbstractShip> fs : result) {
@@ -59,10 +57,8 @@ public class Main {
                 boxExec.shutdown();
                 eatExec.shutdown();
             }
-
-
         }
-
+        System.out.println("Итог: ");
         for (AbstractShip abstractShip : leaveShipList) {
             System.out.println(abstractShip.toString());
         }

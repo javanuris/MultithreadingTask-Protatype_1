@@ -7,7 +7,8 @@ import java.util.concurrent.Callable;
  * Created by User on 04.03.2017.
  */
 public class CommonShipThread implements Callable<AbstractShip> {
-    AbstractShip abstractShip;
+    private AbstractShip abstractShip;
+    private static final int LOAD_SPEED = 10;
 
     public CommonShipThread(AbstractShip abstractShip) {
         this.abstractShip = abstractShip;
@@ -19,7 +20,7 @@ public class CommonShipThread implements Callable<AbstractShip> {
         Thread.sleep(1000);
         System.out.println("Номер: "+abstractShip.getId() + " начал загрузку");
         while (!abstractShip.loadDetermine()) {
-            abstractShip.setGoodOnShip(abstractShip.getGoodOnShip() + 10);
+            abstractShip.setGoodOnShip(abstractShip.getGoodOnShip() + LOAD_SPEED);
             Thread.sleep(100);
         }
         System.out.println("Номер: "+abstractShip.getId() + " загрузился!");
