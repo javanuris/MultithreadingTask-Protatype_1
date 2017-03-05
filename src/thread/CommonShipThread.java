@@ -1,5 +1,7 @@
 package thread;
 import ship.AbstractShip;
+
+import java.util.Random;
 import java.util.concurrent.Callable;
 
 
@@ -21,7 +23,7 @@ public class CommonShipThread implements Callable<AbstractShip> {
         System.out.println("Номер: "+abstractShip.getId() + " начал загрузку");
         while (!abstractShip.loadDetermine()) {
             abstractShip.setGoodOnShip(abstractShip.getGoodOnShip() + LOAD_SPEED);
-            Thread.sleep(100);
+            Thread.sleep(1000);
         }
         System.out.println("Номер: "+abstractShip.getId() + " загрузился!");
         Thread.sleep(1000);

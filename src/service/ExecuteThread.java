@@ -7,18 +7,16 @@ import thread.CommonShipThread;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
  * Created by User on 05.03.2017.
  */
 public class ExecuteThread {
 
-    private ArrayList<AbstractShip> comeShipList = new ArrayList<>();
-    private ArrayList<AbstractShip> leaveShipList = new ArrayList<>();
+    private CopyOnWriteArrayList<AbstractShip> comeShipList = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<AbstractShip> leaveShipList = new CopyOnWriteArrayList<>();
+
     private ArrayList<Future<AbstractShip>> result = new ArrayList<>();
 
     private ExecutorService oilExec = Executors.newFixedThreadPool(Creator.CONNECTION_COUNT),
