@@ -21,7 +21,7 @@ public class CommonShipThread implements Callable<AbstractShip> {
         System.out.println("Номер: "+abstractShip.getId() + " начал загрузку");
         while (!abstractShip.loadDetermine()) {
             abstractShip.setGoodOnShip(abstractShip.getGoodOnShip() + LOAD_SPEED);
-            Thread.sleep(1000);
+            Thread.sleep(100);
         }
         System.out.println("Номер: "+abstractShip.getId() + " загрузился!");
         Thread.sleep(1000);
