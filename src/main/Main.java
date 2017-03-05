@@ -35,6 +35,7 @@ public class Main {
             switch (ship.getType()) {
                 case Creator.EAT_SHIP:
                     result.add(eatExec.submit(new CommonShipThread(ship)));
+
                     break;
                 case Creator.BOX_SHIP:
                     result.add(boxExec.submit(new CommonShipThread(ship)));
@@ -52,16 +53,14 @@ public class Main {
                 leaveShipList.add(fs.get());
             } catch (Exception e) {
 
-            }finally {
-                oilExec.shutdown();
-                boxExec.shutdown();
-                eatExec.shutdown();
             }
         }
         System.out.println("Итог: ");
         for (AbstractShip abstractShip : leaveShipList) {
             System.out.println(abstractShip.toString());
         }
-
+        oilExec.shutdown();
+        boxExec.shutdown();
+        eatExec.shutdown();
     }
 }
